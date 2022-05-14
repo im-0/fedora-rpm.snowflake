@@ -21,6 +21,7 @@ BuildRequires:  golang >= 1.17
 Pluggable Transport for Tor using WebRTC, inspired by Flashproxy.
 
 
+# TODO: Build and package other binaries.
 %package client
 Summary: Pluggable Transport for Tor using WebRTC (client)
 
