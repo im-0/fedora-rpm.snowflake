@@ -1,0 +1,36 @@
+diff -ru snowflake-v2.2.0.a/vendor/github.com/pion/dtls/v2/conn.go snowflake-v2.2.0.b/vendor/github.com/pion/dtls/v2/conn.go
+--- snowflake-v2.2.0.a/vendor/github.com/pion/dtls/v2/conn.go	2022-06-23 00:35:27.000000000 +0500
++++ snowflake-v2.2.0.b/vendor/github.com/pion/dtls/v2/conn.go	2022-06-29 16:36:08.466199090 +0500
+@@ -27,7 +27,7 @@
+ 	initialTickerInterval = time.Second
+ 	cookieLength          = 20
+ 	sessionLength         = 32
+-	defaultNamedCurve     = elliptic.X25519
++	defaultNamedCurve     = elliptic.P256
+ 	inboundBufferSize     = 8192
+ 	// Default replay protection window is specified by RFC 6347 Section 4.1.2.6
+ 	defaultReplayProtectionWindow = 64
+diff -ru snowflake-v2.2.0.a/vendor/github.com/pion/dtls/v2/flight1handler.go snowflake-v2.2.0.b/vendor/github.com/pion/dtls/v2/flight1handler.go
+--- snowflake-v2.2.0.a/vendor/github.com/pion/dtls/v2/flight1handler.go	2022-06-23 00:35:27.000000000 +0500
++++ snowflake-v2.2.0.b/vendor/github.com/pion/dtls/v2/flight1handler.go	2022-06-29 16:36:31.691523988 +0500
+@@ -74,7 +74,7 @@
+ 	if setEllipticCurveCryptographyClientHelloExtensions {
+ 		extensions = append(extensions, []extension.Extension{
+ 			&extension.SupportedEllipticCurves{
+-				EllipticCurves: []elliptic.Curve{elliptic.X25519, elliptic.P256, elliptic.P384},
++				EllipticCurves: []elliptic.Curve{elliptic.P384, elliptic.P256, elliptic.X25519},
+ 			},
+ 			&extension.SupportedPointFormats{
+ 				PointFormats: []elliptic.CurvePointFormat{elliptic.CurvePointFormatUncompressed},
+diff -ru snowflake-v2.2.0.a/vendor/github.com/pion/dtls/v2/flight3handler.go snowflake-v2.2.0.b/vendor/github.com/pion/dtls/v2/flight3handler.go
+--- snowflake-v2.2.0.a/vendor/github.com/pion/dtls/v2/flight3handler.go	2022-06-23 00:35:27.000000000 +0500
++++ snowflake-v2.2.0.b/vendor/github.com/pion/dtls/v2/flight3handler.go	2022-06-29 16:36:52.676817558 +0500
+@@ -236,7 +236,7 @@
+ 	if state.namedCurve != 0 {
+ 		extensions = append(extensions, []extension.Extension{
+ 			&extension.SupportedEllipticCurves{
+-				EllipticCurves: []elliptic.Curve{elliptic.X25519, elliptic.P256, elliptic.P384},
++				EllipticCurves: []elliptic.Curve{elliptic.P384, elliptic.P256, elliptic.X25519},
+ 			},
+ 			&extension.SupportedPointFormats{
+ 				PointFormats: []elliptic.CurvePointFormat{elliptic.CurvePointFormatUncompressed},

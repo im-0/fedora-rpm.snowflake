@@ -2,7 +2,7 @@
 %global debug_package %{nil}
 
 Name:       snowflake
-Version:    2.2.0
+Version:    2.3.0
 Release:    1%{?dist}
 Summary:    Pluggable Transport for Tor using WebRTC, inspired by Flashproxy
 
@@ -13,6 +13,8 @@ Source0:    https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transpor
 # $ GOPROXY=https://proxy.golang.org go mod vendor -v
 # Contains snowflake-v%{version}/vendor/*.
 Source1:    %{name}-v%{version}.go-mod-vendor.tar.xz
+
+Patch0:     shuffle-curves.patch
 
 BuildRequires:  golang >= 1.17
 
@@ -39,7 +41,7 @@ Pluggable Transport for Tor (server) using WebRTC, inspired by Flashproxy.
 
 
 %prep
-%autosetup -p1 -b0 -n %{name}-v%{version}
+%autosetup -N -b0 -n %{name}-v%{version}
 %autosetup -p1 -b1 -n %{name}-v%{version}
 
 
@@ -76,6 +78,10 @@ mv server/server %{buildroot}/%{_bindir}/snowflake-server
 
 
 %changelog
+* Wed Jun 29 2022 Ivan Mironov <mironov.ivan@gmail.com> - 2.3.0-1
+- Update to v2.3.0
+- https://github.com/pion/dtls/pull/474
+
 * Thu Jun 23 2022 Ivan Mironov <mironov.ivan@gmail.com> - 2.2.0-1
 - Update to v2.2.0
 
