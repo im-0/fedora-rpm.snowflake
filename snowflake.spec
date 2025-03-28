@@ -2,7 +2,7 @@
 %global debug_package %{nil}
 
 Name:       snowflake
-Version:    2.9.2
+Version:    2.11.0
 Release:    1%{?dist}
 Summary:    Pluggable Transport for Tor using WebRTC, inspired by Flashproxy
 
@@ -80,6 +80,9 @@ mv server/server %{buildroot}/%{_bindir}/snowflake-server
 
 
 %changelog
+* Fri Mar 28 2025 Ivan Mironov <mironov.ivan@gmail.com> - 2.11.0-1
+- Update to v2.11.0
+
 * Fri Mar 22 2024 Ivan Mironov <mironov.ivan@gmail.com> - 2.9.2-1
 - Update to v2.9.2
 

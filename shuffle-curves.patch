@@ -1,19 +1,19 @@
-diff -ru snowflake-v2.6.1.a/vendor/github.com/pion/dtls/v2/config.go snowflake-v2.6.1.b/vendor/github.com/pion/dtls/v2/config.go
---- snowflake-v2.6.1.a/vendor/github.com/pion/dtls/v2/config.go	2023-09-25 12:31:29.000000000 +0200
-+++ snowflake-v2.6.1.b/vendor/github.com/pion/dtls/v2/config.go	2023-09-25 12:37:23.209722268 +0200
-@@ -195,7 +195,7 @@
+diff -ru snowflake-v2.11.0.a/vendor/github.com/pion/dtls/v3/config.go snowflake-v2.11.0.b/vendor/github.com/pion/dtls/v3/config.go
+--- snowflake-v2.11.0.a/vendor/github.com/pion/dtls/v3/config.go	2025-03-28 20:24:08.000000000 +0100
++++ snowflake-v2.11.0.b/vendor/github.com/pion/dtls/v3/config.go	2025-03-28 20:32:32.067893022 +0100
+@@ -230,7 +230,7 @@
  
  const defaultMTU = 1200 // bytes
  
 -var defaultCurves = []elliptic.Curve{elliptic.X25519, elliptic.P256, elliptic.P384} //nolint:gochecknoglobals
-+var defaultCurves = []elliptic.Curve{elliptic.P384, elliptic.P256, elliptic.X25519} //nolint:gochecknoglobals
++var defaultCurves = []elliptic.Curve{elliptic.P384, elliptic.X25519, elliptic.P256} //nolint:gochecknoglobals
  
  // PSKCallback is called once we have the remote's PSKIdentityHint.
  // If the remote provided none it will be nil
-diff -ru snowflake-v2.6.1.a/vendor/github.com/pion/dtls/v2/conn.go snowflake-v2.6.1.b/vendor/github.com/pion/dtls/v2/conn.go
---- snowflake-v2.6.1.a/vendor/github.com/pion/dtls/v2/conn.go	2023-09-25 12:31:29.000000000 +0200
-+++ snowflake-v2.6.1.b/vendor/github.com/pion/dtls/v2/conn.go	2023-09-25 12:37:49.983114068 +0200
-@@ -30,7 +30,7 @@
+diff -ru snowflake-v2.11.0.a/vendor/github.com/pion/dtls/v3/conn.go snowflake-v2.11.0.b/vendor/github.com/pion/dtls/v3/conn.go
+--- snowflake-v2.11.0.a/vendor/github.com/pion/dtls/v3/conn.go	2025-03-28 20:24:08.000000000 +0100
++++ snowflake-v2.11.0.b/vendor/github.com/pion/dtls/v3/conn.go	2025-03-28 20:31:17.697885791 +0100
+@@ -31,7 +31,7 @@
  	initialTickerInterval = time.Second
  	cookieLength          = 20
  	sessionLength         = 32
@@ -22,15 +22,3 @@ diff -ru snowflake-v2.6.1.a/vendor/github.com/pion/dtls/v2/conn.go snowflake-v2.
  	inboundBufferSize     = 8192
  	// Default replay protection window is specified by RFC 6347 Section 4.1.2.6
  	defaultReplayProtectionWindow = 64
-diff -ru snowflake-v2.6.1.a/vendor/github.com/pion/dtls/v2/flight3handler.go snowflake-v2.6.1.b/vendor/github.com/pion/dtls/v2/flight3handler.go
---- snowflake-v2.6.1.a/vendor/github.com/pion/dtls/v2/flight3handler.go	2023-09-25 12:31:29.000000000 +0200
-+++ snowflake-v2.6.1.b/vendor/github.com/pion/dtls/v2/flight3handler.go	2023-09-25 12:38:26.021641438 +0200
-@@ -239,7 +239,7 @@
- 	if state.namedCurve != 0 {
- 		extensions = append(extensions, []extension.Extension{
- 			&extension.SupportedEllipticCurves{
--				EllipticCurves: []elliptic.Curve{elliptic.X25519, elliptic.P256, elliptic.P384},
-+				EllipticCurves: []elliptic.Curve{elliptic.P384, elliptic.P256, elliptic.X25519},
- 			},
- 			&extension.SupportedPointFormats{
- 				PointFormats: []elliptic.CurvePointFormat{elliptic.CurvePointFormatUncompressed},
